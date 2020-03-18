@@ -1,6 +1,7 @@
-import { Body, Controller, Get, Param, Post, UseGuards, UseInterceptors, Inject } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, UseGuards, UseInterceptors, Inject, HttpException } from '@nestjs/common';
 import { WeChatNativePayService } from '@notadd/addon-pay';
 import { ConfigService } from '@nestjs/config';
+import AlipaySdk from 'alipay-sdk';
 
 import { Roles } from '../common/decorators/roles.decorator';
 import { RolesGuard } from '../common/guards/roles.guard';
@@ -46,11 +47,22 @@ export class CatsController {
         //     notify_url: 'your.domain.com/payment/wechat_order_notify', // 服务端支付通知地址
         //     trade_type: WeChatTradeType.NATIVE,
         // });
-        const result: any = {};
-        result.appId = this.configService.get('appId');
-        result.privateKey = this.configService.get('privateKey');
-        console.log(result);
-        return result;
+        const params: any = {};
+        params.appId = this.configService.get('appId');
+        params.privateKey = this.configService.get('privateKey');
+        console.log(params);
+        try {
+            const aliPaySdk = new AlipaySdk(params);
+            const result = await aliPaySdk.exec('alipay.system.oauth.token', {
+                grantType: 'authorization_code',
+                code: 'code',
+                refreshToken: 'token',
+            });
+            return result;
+        } catch (error) {
+            console.log(error);
+            throw new HttpException(JSON.parse(error.serverResult.data).error_response, 401);   
+        }
     }
 
     @Get(':id')

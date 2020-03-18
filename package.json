@@ -25,6 +25,7 @@
     "@nestjs/core": "6.10.12",
     "@nestjs/platform-express": "6.10.12",
     "@notadd/addon-pay": "^0.5.10",
+    "alipay-sdk": "^3.0.8",
     "class-transformer": "0.2.3",
     "class-validator": "0.11.0",
     "reflect-metadata": "0.1.13",
