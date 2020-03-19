@@ -1,7 +1,7 @@
 import { Body, Controller, Get, Param, Post, UseGuards, UseInterceptors, Inject, HttpException } from '@nestjs/common';
-import { WeChatNativePayService } from '@notadd/addon-pay';
+import { WeChatNativePayService, AliPayService } from '@huazai5m/nt-addon-pay';
 import { ConfigService } from '@nestjs/config';
-import AlipaySdk from 'alipay-sdk';
+// import AlipaySdk from 'alipay-sdk';
 
 import { Roles } from '../common/decorators/roles.decorator';
 import { RolesGuard } from '../common/guards/roles.guard';
@@ -20,6 +20,7 @@ export class CatsController {
         private readonly catsService: CatsService,
         private configService: ConfigService,
         @Inject(WeChatNativePayService) private readonly weChatNativePayService: WeChatNativePayService,
+        @Inject(AliPayService) private readonly aliPayService: AliPayService,
     ) {}
 
     @Post()
@@ -50,10 +51,9 @@ export class CatsController {
         const params: any = {};
         params.appId = this.configService.get('appId');
         params.privateKey = this.configService.get('privateKey');
-        console.log(params);
+        // console.log(params);
         try {
-            const aliPaySdk = new AlipaySdk(params);
-            const result = await aliPaySdk.exec('alipay.system.oauth.token', {
+            const result = await this.aliPayService.exec('alipay.system.oauth.token', {
                 grantType: 'authorization_code',
                 code: 'code',
                 refreshToken: 'token',
@@ -61,7 +61,7 @@ export class CatsController {
             return result;
         } catch (error) {
             console.log(error);
-            throw new HttpException(JSON.parse(error.serverResult.data).error_response, 401);   
+            throw new HttpException(JSON.parse(error.serverResult.data).error_response, 401);
         }
     }
 

@@ -16,9 +16,9 @@ import { readFileSync } from 'fs';
                 sandbox: false, // 是否启用沙箱环境，默认不启用，用于商户支付验收测试
             },
             aliConfig: {
-                appId: 'app',
-                alipayPublicKey: 'a',
-                privateKey: '1',
+                appId: '2021001145608062',
+                // alipayPublicKey: 'a',
+                privateKey: readFileSync('./hs_alipk.txt', 'ascii'),
             },
         }),
     ],
