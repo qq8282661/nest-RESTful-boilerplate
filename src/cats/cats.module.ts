@@ -3,9 +3,11 @@ import { CatsController } from './cats.controller';
 import { CatsService } from './cats.service';
 import { PayAddon } from '@huazai5m/nt-addon-pay';
 import { readFileSync } from 'fs';
+import { WechatApiAddon } from '@jianghohwason/nt-addon-wechatapi';
 
 @Module({
     imports: [
+        WechatApiAddon.forRoot(),
         PayAddon.forRoot({
             wechatConfig: {
                 appid: 'wx795c1d4619223d94', // 公众号appi/应用appid/小程序appid

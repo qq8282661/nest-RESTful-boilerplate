@@ -11,6 +11,7 @@ import { ParseIntPipe } from '../common/pipes/parse-int.pipe';
 import { CatsService } from './cats.service';
 import { CreateCatDto } from './dto/create-cat.dto';
 import { Cat } from './interfaces/cat.interface';
+import { WeChatUtil } from '@jianghohwason/nt-addon-wechatapi';
 
 @Controller('cats')
 @UseGuards(RolesGuard)
@@ -21,6 +22,7 @@ export class CatsController {
         private configService: ConfigService,
         @Inject(WeChatNativePayService) private readonly weChatNativePayService: WeChatNativePayService,
         @Inject(AliPayService) private readonly aliPayService: AliPayService,
+        @Inject(WeChatUtil) private readonly wechatUser: WeChatUtil,
     ) {}
 
     @Post()
@@ -48,21 +50,24 @@ export class CatsController {
         //     notify_url: 'your.domain.com/payment/wechat_order_notify', // 服务端支付通知地址
         //     trade_type: WeChatTradeType.NATIVE,
         // });
-        const params: any = {};
-        params.appId = this.configService.get('appId');
-        params.privateKey = this.configService.get('privateKey');
-        // console.log(params);
-        try {
-            const result = await this.aliPayService.exec('alipay.system.oauth.token', {
-                grantType: 'authorization_code',
-                code: 'code',
-                refreshToken: 'token',
-            });
-            return result;
-        } catch (error) {
-            console.log(error);
-            throw new HttpException(JSON.parse(error.serverResult.data).error_response, 401);
-        }
+        // const params: any = {};
+        // params.appId = this.configService.get('appId');
+        // params.privateKey = this.configService.get('privateKey');
+        // // console.log(params);
+        // try {
+        //     const result = await this.aliPayService.exec('alipay.system.oauth.token', {
+        //         grantType: 'authorization_code',
+        //         code: 'code',
+        //         refreshToken: 'token',
+        //     });
+        //     return result;
+        // } catch (error) {
+        //     // console.log(error);
+        //     throw new HttpException(JSON.parse(error.serverResult.data).error_response, 401);
+        // }
+        const appId = 'wx795c1d4619223d94';
+        const appsecret = 'c994a3ac0cb9df132ab3c6724c0f0370';
+        return this.wechatUser.weChatGetAccountToken(appId, appsecret);
     }
 
     @Get(':id')
