@@ -11,7 +11,7 @@
         "dev": "npm run start:watch",
         "start:watch": "nodemon",
         "start:debug": "nest start --debug --watch",
-        "start:prod": "node dist/main",
+        "start:prod": "node dist/src/main",
         "lint": "tslint -p tsconfig.json -c tslint.json",
         "test": "jest",
         "test:watch": "jest --watch",
