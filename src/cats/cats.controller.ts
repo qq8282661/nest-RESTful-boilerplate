@@ -34,14 +34,14 @@ export class CatsController {
 
     @Get()
     async findAll() {
-        // await new Promise((resolve) => {
-        //     setTimeout(() => {
-        //         resolve();
-        //     }, 1000);
-        // });
+        await new Promise((resolve) => {
+            setTimeout(() => {
+                resolve();
+            }, 1000);
+        });
         // const a = 1 / 0;
-        // // console.log('a', a);
-        // return this.catsService.findAll();
+        // console.log('a', a);
+        return this.catsService.findAll();
         // const result = await this.weChatNativePayService.pay({
         //     body: '支付一下',
         //     out_trade_no: '201811271512000001',
@@ -65,9 +65,9 @@ export class CatsController {
         //     // console.log(error);
         //     throw new HttpException(JSON.parse(error.serverResult.data).error_response, 401);
         // }
-        const appId = 'wx795c1d4619223d94';
-        const appsecret = 'c994a3ac0cb9df132ab3c6724c0f0370';
-        return this.wechatUser.weChatGetAccountToken(appId, appsecret);
+        // const appId = 'wx795c1d4619223d94';
+        // const appsecret = 'c994a3ac0cb9df132ab3c6724c0f0370';
+        // return this.wechatUser.weChatGetAccountToken(appId, appsecret);
     }
 
     @Get(':id')
