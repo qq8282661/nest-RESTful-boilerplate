@@ -1,5 +1,5 @@
 {
-  "extends": ["tslint-config-egg", "tslint-plugin-prettier", "tslint-config-prettier"],
+  "extends": ["tslint-plugin-prettier", "tslint-config-prettier"],
   "linterOptions": {
     "exclude": ["node_modules/**", "src/grpc/generated.ts"]
   },
