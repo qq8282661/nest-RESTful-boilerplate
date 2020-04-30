@@ -1,2 +1,17 @@
-node_modules/
-.git/
+.git
+node_modules
+
+Dockerfile
+.DS_Store
+.gitignore
+README.md
+
+# IDE
+/.idea
+/.awcache
+/.vscode
+
+# tests
+/test
+/coverage
+/.nyc_output

@@ -5,32 +5,29 @@ import { CatsModule } from '../../src/cats/cats.module';
 import { CatsService } from '../../src/cats/cats.service';
 
 describe('Cats', () => {
-    const catsService = { findAll: () => ['test'] };
+  const catsService = { findAll: () => ['test'] };
 
-    let app: INestApplication;
+  let app: INestApplication;
 
-    beforeAll(async () => {
-        const module = await Test.createTestingModule({
-            imports: [CatsModule],
-        })
-            .overrideProvider(CatsService)
-            .useValue(catsService)
-            .compile();
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      imports: [CatsModule],
+    })
+      .overrideProvider(CatsService)
+      .useValue(catsService)
+      .compile();
 
-        app = module.createNestApplication();
-        await app.init();
+    app = module.createNestApplication();
+    await app.init();
+  });
+
+  it(`/GET cats`, () => {
+    return request(app.getHttpServer()).get('/cats').expect(200).expect({
+      data: catsService.findAll(),
     });
+  });
 
-    it(`/GET cats`, () => {
-        return request(app.getHttpServer())
-            .get('/cats')
-            .expect(200)
-            .expect({
-                data: catsService.findAll(),
-            });
-    });
-
-    afterAll(async () => {
-        await app.close();
-    });
+  afterAll(async () => {
+    await app.close();
+  });
 });
