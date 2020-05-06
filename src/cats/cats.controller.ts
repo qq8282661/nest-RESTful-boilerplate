@@ -15,7 +15,7 @@ import { WeChatUtil } from '@jianghohwason/nt-addon-wechatapi';
 
 @Controller('cats')
 @UseGuards(RolesGuard)
-@UseInterceptors(LoggingInterceptor, TransformInterceptor)
+// @UseInterceptors(LoggingInterceptor, TransformInterceptor)
 export class CatsController {
   constructor(
     private readonly catsService: CatsService,
