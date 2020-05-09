@@ -6,7 +6,8 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
     &&apk -- update add tzdata \
     && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \ 
     && echo "Asia/Shanghai" > /etc/timezone \
-    && apk del tzdata
+    && apk del tzdata \
+    && apk add --no-cache bash
 
 RUN mkdir -p /usr/src/cat/
 
@@ -24,4 +25,4 @@ COPY . /usr/src/cat/
 
 EXPOSE 3000
 
-CMD [ "node", "dist/src/main" ]
+CMD node dist/src/main
