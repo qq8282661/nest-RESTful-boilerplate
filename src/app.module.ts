@@ -19,7 +19,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       autoLoadEntities: true,
       logging: true,
 
-      dropSchema: true,
+      // dropSchema: true,
     }),
     CatsModule,
   ],
