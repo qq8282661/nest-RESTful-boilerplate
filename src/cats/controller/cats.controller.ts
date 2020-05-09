@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, UseGuards, UseInterceptors, Inject, Logger } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, UseGuards, Inject } from '@nestjs/common';
 import { WeChatNativePayService, AliPayService } from '@huazai5m/nt-addon-pay';
 import { ConfigService } from '@nestjs/config';
 // import AlipaySdk from 'alipay-sdk';
@@ -9,12 +9,12 @@ import { LoggingInterceptor } from '../../common/interceptors/logging.intercepto
 import { TransformInterceptor } from '../../common/interceptors/transform.interceptor';
 import { ParseIntPipe } from '../../common/pipes/parse-int.pipe';
 import { CatsService } from '../service/cats.service';
-import { CreateCatDto } from './dto/create-cat.dto';
-import { Cat } from '../interfaces/cat.interface';
+import { CatDto } from './dto/cat.dto';
+
 import { WeChatUtil } from '@jianghohwason/nt-addon-wechatapi';
 
 @Controller('cats')
-@UseGuards(RolesGuard)
+// @UseGuards(RolesGuard)
 // @UseInterceptors(LoggingInterceptor, TransformInterceptor)
 export class CatsController {
   constructor(
@@ -27,21 +27,21 @@ export class CatsController {
 
   @Post()
   @Roles('admin')
-  async create(@Body() createCatDto: CreateCatDto) {
+  async create(@Body() createCatDto: CatDto) {
     this.catsService.create(createCatDto);
     return createCatDto;
   }
 
   @Get()
   async findAll() {
-    await new Promise((resolve) => {
-      setTimeout(() => {
-        resolve();
-      }, 1000);
-    });
+    // await new Promise((resolve) => {
+    //   setTimeout(() => {
+    //     resolve();
+    //   }, 1000);
+    // });
     // const a = 1 / 0;
     // console.log('a', a);
-    return this.catsService.findAll();
+    return await this.catsService.findAll();
     // const result = await this.weChatNativePayService.pay({
     //     body: '支付一下',
     //     out_trade_no: '201811271512000001',

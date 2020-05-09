@@ -1,6 +1,7 @@
 import { IsInt, IsString } from 'class-validator';
+import { UserDto } from './user.dto';
 
-export class CreateCatDto {
+export class CatDto {
   @IsString()
   readonly name: string;
 
@@ -9,4 +10,8 @@ export class CreateCatDto {
 
   @IsString()
   readonly breed: string;
+
+  readonly id: string;
+
+  user: UserDto;
 }

@@ -2,8 +2,11 @@ import { Module } from '@nestjs/common';
 import { CatsController } from './controller/cats.controller';
 import { CatsService } from './service/cats.service';
 import { PayAddon } from '@huazai5m/nt-addon-pay';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { readFileSync } from 'fs';
 import { WechatApiAddon } from '@jianghohwason/nt-addon-wechatapi';
+import { User } from './entities/user.entity';
+import { Cat } from './entities/cat.entity';
 
 @Module({
   imports: [
@@ -23,6 +26,7 @@ import { WechatApiAddon } from '@jianghohwason/nt-addon-wechatapi';
         privateKey: readFileSync('./hs_alipk.txt', 'ascii'),
       },
     }),
+    TypeOrmModule.forFeature([User, Cat]),
   ],
   controllers: [CatsController],
   providers: [CatsService],
