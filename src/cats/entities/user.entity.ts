@@ -1,4 +1,13 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn, OneToMany } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  OneToOne,
+  JoinColumn,
+  OneToMany,
+  CreateDateColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 import { Profile } from './profile.entity';
 import { Cat } from './cat.entity';
 
@@ -10,9 +19,16 @@ export class User {
   @Column()
   name: string;
 
+  @CreateDateColumn()
+  createdAt: Date;
+
+  @UpdateDateColumn()
+  updatedAt: Date;
+
   @OneToOne((type) => Profile)
   @JoinColumn()
   profile: Profile;
+
   @Column({ nullable: true })
   profileId: string;
 

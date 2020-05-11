@@ -1,12 +1,24 @@
 import { Module } from '@nestjs/common';
 import { CatsModule } from './cats/cats.module';
 import { ConfigModule } from '@nestjs/config';
-import configuration from '../config/configuration';
+import devConfig from '../config/dev.config';
+import prodConfig from '../config/production.config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { env } from 'process';
+
+const configPrams = { isGlobal: true, ignoreEnvFile: true, load: [] };
+
+if (env.NODE_ENV === 'development') {
+  configPrams.load = [devConfig];
+}
+
+if (env.NODE_ENV === 'production') {
+  configPrams.load = [prodConfig];
+}
 
 @Module({
   imports: [
-    ConfigModule.forRoot({ isGlobal: true, ignoreEnvFile: true, load: [configuration] }),
+    ConfigModule.forRoot(configPrams),
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'localhost',
@@ -19,7 +31,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       autoLoadEntities: true,
       logging: true,
 
-      // dropSchema: true,
+      dropSchema: true,
     }),
     CatsModule,
   ],
