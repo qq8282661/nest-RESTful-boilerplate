@@ -16,6 +16,13 @@ export class CatsService {
   }
 
   async findAll() {
-    return this.catRepository.find();
+    // const cats = this.catRepository
+    //   .createQueryBuilder('cat')
+    //   .leftJoinAndSelect('cat.user', 'user')
+    //   .select(['cat', 'user.name'])
+    //   .getMany();
+    const cats = this.catRepository.find({ relations: ['user'] });
+
+    return cats;
   }
 }

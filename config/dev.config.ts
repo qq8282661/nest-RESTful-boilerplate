@@ -15,6 +15,6 @@ export default () => ({
     entities: ['src/**/*.entity{.ts,.js}'],
     autoLoadEntities: true,
     logging: true,
-    dropSchema: true,
+    // dropSchema: true,
   },
 });
