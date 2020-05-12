@@ -6,6 +6,7 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   DeleteDateColumn,
+  RelationId,
 } from 'typeorm';
 import { User } from './user.entity';
 
@@ -20,6 +21,9 @@ export class Cat {
   @Column({ type: 'int', nullable: true })
   age: number;
 
+  @Column({ type: 'varchar', nullable: true })
+  breed: string;
+
   @CreateDateColumn()
   createdAt: Date;
 
@@ -29,14 +33,11 @@ export class Cat {
   @DeleteDateColumn()
   deletedAt: Date;
 
-  @Column({ type: 'varchar', nullable: true })
-  breed: string;
-
   @ManyToOne(
     (type) => User,
     (user) => user.cat,
   )
   user: User;
-  @Column({ nullable: true })
+  @RelationId((cat: Cat) => cat.user)
   userId: string;
 }

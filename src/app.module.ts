@@ -1,21 +1,23 @@
 import { Module } from '@nestjs/common';
-import { CatsModule } from './cats/cats.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import devConfig from '../config/dev.config';
-import prodConfig from '../config/production.config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { env } from 'process';
+
+import { CatsModule } from './cats/cats.module';
+import devConfig from '../config/dev.config';
+import prodConfig from '../config/production.config';
+import defaultConfig from '../config/default.config';
 
 const configPrams = { isGlobal: true, ignoreEnvFile: true, load: [] };
 
 if (env.NODE_ENV === 'development') {
   console.log(env.NODE_ENV);
-  configPrams.load = [devConfig];
+  configPrams.load = [() => ({ ...defaultConfig(), ...devConfig() })];
 }
 
 if (env.NODE_ENV === 'production') {
   console.log(env.NODE_ENV);
-  configPrams.load = [prodConfig];
+  configPrams.load = [() => ({ ...defaultConfig(), ...prodConfig() })];
 }
 
 @Module({

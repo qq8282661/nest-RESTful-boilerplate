@@ -8,6 +8,7 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   DeleteDateColumn,
+  RelationId,
 } from 'typeorm';
 import { Profile } from './profile.entity';
 import { Cat } from './cat.entity';
@@ -33,7 +34,7 @@ export class User {
   @JoinColumn()
   profile: Profile;
 
-  @Column({ nullable: true })
+  @RelationId((user: User) => user.profile)
   profileId: string;
 
   @OneToMany(
