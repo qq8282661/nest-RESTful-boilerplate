@@ -7,11 +7,12 @@ import {
   OneToMany,
   CreateDateColumn,
   UpdateDateColumn,
+  DeleteDateColumn,
 } from 'typeorm';
 import { Profile } from './profile.entity';
 import { Cat } from './cat.entity';
 
-@Entity()
+@Entity({ orderBy: { createdAt: 'DESC' } })
 export class User {
   @PrimaryGeneratedColumn('uuid')
   id: number;
@@ -25,7 +26,10 @@ export class User {
   @UpdateDateColumn()
   updatedAt: Date;
 
-  @OneToOne((type) => Profile)
+  @DeleteDateColumn()
+  deletedAt: Date;
+
+  @OneToOne((type) => Profile, { onDelete: 'CASCADE' })
   @JoinColumn()
   profile: Profile;
 

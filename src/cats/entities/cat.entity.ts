@@ -1,7 +1,15 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  ManyToOne,
+  CreateDateColumn,
+  UpdateDateColumn,
+  DeleteDateColumn,
+} from 'typeorm';
 import { User } from './user.entity';
 
-@Entity()
+@Entity({ orderBy: { createdAt: 'DESC' } })
 export class Cat {
   @PrimaryGeneratedColumn('uuid')
   id: string;
@@ -17,8 +25,13 @@ export class Cat {
 
   @UpdateDateColumn()
   updatedAt: Date;
+
+  @DeleteDateColumn()
+  deletedAt: Date;
+
   @Column({ type: 'varchar', nullable: true })
   breed: string;
+
   @ManyToOne(
     (type) => User,
     (user) => user.cat,
