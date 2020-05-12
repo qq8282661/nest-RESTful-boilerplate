@@ -16,3 +16,8 @@ README.md
 /coverage
 /.nyc_output
 e2e
+
+# development files
+.prettierrc
+jest.json
+nodemon.json
