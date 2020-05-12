@@ -21,6 +21,7 @@ export class CatsService {
     //   .leftJoinAndSelect('cat.user', 'user')
     //   .select(['cat', 'user.name'])
     //   .getMany();
+
     const cats = this.catRepository.find({ relations: ['user'] });
 
     return cats;
