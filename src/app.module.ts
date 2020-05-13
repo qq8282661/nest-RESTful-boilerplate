@@ -3,10 +3,15 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { env } from 'process';
 
-import { CatsModule } from './cats/cats.module';
 import devConfig from './config/dev.config';
 import prodConfig from './config/production.config';
 import defaultConfig from './config/default.config';
+
+import { CatsController } from './controller/cats.controller';
+import { CatsService } from './service/cats.service';
+import { User } from './entities/user.entity';
+import { Cat } from './entities/cat.entity';
+import { Profile } from './entities/profile.entity';
 
 const configPrams = { isGlobal: true, ignoreEnvFile: true, load: [] };
 
@@ -33,11 +38,14 @@ if (env.NODE_ENV === 'production') {
         database: config.get('database.database'),
         synchronize: config.get('database.synchronize'),
         logging: config.get('database.logging'),
-        entities: [__dirname + '/**/*.entity{.ts,.js}'],
+        // entities: [__dirname + '/**/*.entity{.ts,.js}'],
+        autoLoadEntities: true,
       }),
       inject: [ConfigService],
     }),
-    CatsModule,
+    TypeOrmModule.forFeature([User, Cat, Profile]),
   ],
+  controllers: [CatsController],
+  providers: [CatsService],
 })
 export class AppModule {}

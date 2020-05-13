@@ -1,10 +1,10 @@
-import { Body, Controller, Get, Param, Post, UseGuards, Inject } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 
 import { UsersService } from '../service/user.service';
 import { UserDto } from './dto/user.dto';
-import { Roles } from '../../common/decorators/roles.decorator';
-import { ParseIntPipe } from '../../common/pipes/parse-int.pipe';
+import { Roles } from '../common/decorators/roles.decorator';
+import { ParseIntPipe } from '../common/pipes/parse-int.pipe';
 
 @Controller('users')
 export class UsersController {

@@ -1,7 +1,7 @@
 import { Test } from '@nestjs/testing';
 import { CatsController } from './cats.controller';
 import { CatsService } from '../service/cats.service';
-import { Cat } from '../interfaces/cat.interface';
+import { CatDto } from '../controller/dto/cat.dto';
 
 describe('CatsController', () => {
   let catsController: CatsController;
@@ -19,7 +19,7 @@ describe('CatsController', () => {
 
   describe('findAll', () => {
     it('should return an array of cats', async () => {
-      const result: Cat[] = [
+      const result: any = [
         {
           age: 2,
           breed: 'Bombay',

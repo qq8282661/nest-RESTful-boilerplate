@@ -1,29 +1,20 @@
 import { Body, Controller, Get, Param, Post, UseGuards, Inject } from '@nestjs/common';
-import { WeChatNativePayService, AliPayService } from '@huazai5m/nt-addon-pay';
 import { ConfigService } from '@nestjs/config';
 // import AlipaySdk from 'alipay-sdk';
 
-import { Roles } from '../../common/decorators/roles.decorator';
-import { RolesGuard } from '../../common/guards/roles.guard';
-import { LoggingInterceptor } from '../../common/interceptors/logging.interceptor';
-import { TransformInterceptor } from '../../common/interceptors/transform.interceptor';
-import { ParseIntPipe } from '../../common/pipes/parse-int.pipe';
+import { Roles } from '../common/decorators/roles.decorator';
+import { RolesGuard } from '../common/guards/roles.guard';
+import { LoggingInterceptor } from '../common/interceptors/logging.interceptor';
+import { TransformInterceptor } from '../common/interceptors/transform.interceptor';
+import { ParseIntPipe } from '../common/pipes/parse-int.pipe';
 import { CatsService } from '../service/cats.service';
 import { CatDto } from './dto/cat.dto';
-
-import { WeChatUtil } from '@jianghohwason/nt-addon-wechatapi';
 
 @Controller('cats')
 // @UseGuards(RolesGuard)
 // @UseInterceptors(LoggingInterceptor, TransformInterceptor)
 export class CatsController {
-  constructor(
-    private readonly catsService: CatsService,
-    private configService: ConfigService,
-    @Inject(WeChatNativePayService) private readonly weChatNativePayService: WeChatNativePayService,
-    @Inject(AliPayService) private readonly aliPayService: AliPayService,
-    @Inject(WeChatUtil) private readonly wechatUser: WeChatUtil,
-  ) {}
+  constructor(private readonly catsService: CatsService, private configService: ConfigService) {}
 
   @Post()
   @Roles('admin')
