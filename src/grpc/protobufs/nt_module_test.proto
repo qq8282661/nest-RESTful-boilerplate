@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package nt_module_test;
+
+message PlaceholderRequest {}
+
+message StringDataResponse {
+  int32 code = 1;
+  string message = 2;
+  string data = 3;
+}
+service CatService {
+  rpc HelloRpc(SayHelloRequest) returns (StringDataResponse);
+}
+
+message SayHelloRequest { string name = 1; }

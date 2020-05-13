@@ -6,6 +6,7 @@ import { env } from 'process';
 import devConfig from './config/dev.config';
 import prodConfig from './config/production.config';
 import defaultConfig from './config/default.config';
+import { GrpcClientFactory } from './grpc/grpc.client-factory';
 
 import { CatsController } from './controller/cats.controller';
 import { CatsService } from './service/cats.service';
@@ -46,6 +47,6 @@ if (env.NODE_ENV === 'production') {
     TypeOrmModule.forFeature([User, Cat, Profile]),
   ],
   controllers: [CatsController],
-  providers: [CatsService],
+  providers: [GrpcClientFactory, CatsService],
 })
 export class AppModule {}
