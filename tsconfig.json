@@ -1,16 +1,20 @@
 {
   "compilerOptions": {
+    "target": "es2017",
     "module": "commonjs",
-    "declaration": true,
+    "declaration": false,
     "removeComments": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "target": "es2017",
+    "charset": "utf8",
     "sourceMap": false,
-    "outDir": "./dist",
     "baseUrl": "./",
+    "allowJs": false,
     "incremental": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "inlineSourceMap": true,
+    "inlineSources": true,
+    "importHelpers": false
   },
   "include": ["src/**/*", "src/config"],
   "exclude": ["node_modules", "dist"]

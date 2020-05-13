@@ -11,7 +11,6 @@
     "start:prod": "export NODE_ENV='production'&& ts-node -r tsconfig-paths/register src/main.ts",
     "lint": "tslint -p tsconfig.json -c tslint.json",
     "test": "jest",
-    "prebuild": "rimraf dist",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "test:watch": "jest --watch",
@@ -31,15 +30,12 @@
     "alipay-sdk": "^3.0.8",
     "class-transformer": "0.2.3",
     "class-validator": "0.12.2",
-    "grpc": "^1.24.2",
+    "grpc": "1.20.3",
     "mysql2": "^2.1.0",
     "reflect-metadata": "0.1.13",
     "rxjs": "6.5.3",
     "typeorm": "^0.2.24",
-    "uuid": "^8.0.0",
-    "ts-node": "8.5.4",
-    "tsconfig-paths": "3.9.0",
-    "typescript": "3.6.5"
+    "uuid": "^8.0.0"
   },
   "devDependencies": {
     "@nestjs/cli": "6.12.9",
@@ -51,14 +47,16 @@
     "@types/uuid": "^7.0.3",
     "jest": "24.9.0",
     "prettier": "1.19.1",
-    "rimraf": "2.7.1",
     "rxjs-grpc": "1.0.0-rxjs6.0",
     "supertest": "4.0.2",
     "ts-jest": "24.2.0",
     "ts-loader": "6.2.1",
     "tslint": "5.20.1",
     "tslint-config-prettier": "^1.18.0",
-    "tslint-plugin-prettier": "^2.3.0"
+    "tslint-plugin-prettier": "^2.3.0",
+    "ts-node": "8.5.4",
+    "tsconfig-paths": "3.9.0",
+    "typescript": "3.6.5"
   },
   "jest": {
     "moduleFileExtensions": [
