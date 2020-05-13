@@ -25,4 +25,4 @@ COPY . /usr/src/cat/
 
 EXPOSE 3000
 
-CMD export NODE_ENV='production'&& ts-node -r tsconfig-paths/register src/main.ts
+CMD export NODE_ENV='production'&& node src/main.js

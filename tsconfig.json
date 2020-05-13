@@ -13,8 +13,7 @@
     "incremental": true,
     "skipLibCheck": true,
     "inlineSourceMap": true,
-    "inlineSources": true,
-    "importHelpers": false
+    "inlineSources": true
   },
   "include": ["src/**/*", "src/config"],
   "exclude": ["node_modules", "dist"]
