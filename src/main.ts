@@ -4,15 +4,15 @@ import { AppModule } from './app.module';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { ValidationPipe } from './common/pipes/validation.pipe';
 import { LoggingInterceptor } from './common/interceptors/logging.interceptor';
-import { join } from 'path';
+import { join, resolve } from 'path';
 
 async function bootstrap() {
+  const path = resolve('.');
+  console.log(path);
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
-  const assetsPath = join(__dirname, '..', 'public');
-  console.log(assetsPath);
+
   // 静态资源目录
-  app.useStaticAssets(join(__dirname, '..', 'public'));
-  app.setBaseViewsDir(join(__dirname, '..', 'views'));
+  app.useStaticAssets('./public');
 
   // 模板目录
   app.setBaseViewsDir('./views');

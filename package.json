@@ -8,7 +8,7 @@
     "dev": "npm run start:watch",
     "start:watch": "nodemon",
     "start:debug": "nest start --debug --watch",
-    "start:prod": "export NODE_ENV='production'&& node dist/src/main",
+    "start:prod": "export NODE_ENV='production'&& node dist/main",
     "lint": "tslint -p tsconfig.json -c tslint.json",
     "test": "jest",
     "prebuild": "rimraf dist",
