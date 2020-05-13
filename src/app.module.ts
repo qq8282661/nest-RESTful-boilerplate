@@ -4,9 +4,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { env } from 'process';
 
 import { CatsModule } from './cats/cats.module';
-import devConfig from '../config/dev.config';
-import prodConfig from '../config/production.config';
-import defaultConfig from '../config/default.config';
+import devConfig from './config/dev.config';
+import prodConfig from './config/production.config';
+import defaultConfig from './config/default.config';
 
 const configPrams = { isGlobal: true, ignoreEnvFile: true, load: [] };
 
@@ -31,9 +31,9 @@ if (env.NODE_ENV === 'production') {
         username: config.get('database.username'),
         password: config.get('database.password'),
         database: config.get('database.database'),
-        entities: config.get('database.entities'),
         synchronize: config.get('database.synchronize'),
         logging: config.get('database.logging'),
+        entities: [__dirname + '/**/*.entity{.ts,.js}'],
       }),
       inject: [ConfigService],
     }),

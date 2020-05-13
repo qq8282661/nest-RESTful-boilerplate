@@ -12,7 +12,7 @@ export default () => ({
     password: 'root',
     database: 'test',
     synchronize: true,
-    entities: ['src/**/*.entity{.ts,.js}'],
+    entities: [__dirname + '/**/*.entity.ts'],
     autoLoadEntities: true,
     logging: true,
     dropSchema: true,

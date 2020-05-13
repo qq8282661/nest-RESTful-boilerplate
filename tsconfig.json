@@ -12,6 +12,6 @@
     "incremental": true,
     "skipLibCheck": true
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "src/config"],
   "exclude": ["node_modules", "dist"]
 }

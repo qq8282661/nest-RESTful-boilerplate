@@ -1,10 +1,11 @@
 import { readFileSync } from 'fs';
 
+console.log(__dirname);
 export default () => ({
   appId: '2016123456789012',
   privateKey: readFileSync('./hs_alipk.txt', 'ascii'),
 
-  atabase: {
+  database: {
     type: 'mysql',
     host: 'localhost',
     port: 3306,
@@ -12,9 +13,8 @@ export default () => ({
     password: 'root',
     database: 'test',
     synchronize: true,
-    entities: ['src/**/*.entity{.ts,.js}'],
     autoLoadEntities: true,
     logging: true,
-    // dropSchema: true,
+    dropSchema: true,
   },
 });
