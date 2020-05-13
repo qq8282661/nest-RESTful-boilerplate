@@ -23,6 +23,6 @@ RUN npm i --production --registry=https://registry.npm.taobao.org
 # copy code
 COPY . /usr/src/cat/
 
-EXPOSE 3000
+EXPOSE 3000 3001
 
 CMD export NODE_ENV='production'&& node src/main.js
