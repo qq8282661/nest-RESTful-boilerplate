@@ -25,4 +25,4 @@ COPY . /usr/src/cat/
 
 EXPOSE 3000
 
-CMD node dist/src/main
+CMD export NODE_ENV='production'&& node dist/main

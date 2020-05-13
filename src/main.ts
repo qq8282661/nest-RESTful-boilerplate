@@ -4,11 +4,8 @@ import { AppModule } from './app.module';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { ValidationPipe } from './common/pipes/validation.pipe';
 import { LoggingInterceptor } from './common/interceptors/logging.interceptor';
-import { join, resolve } from 'path';
 
 async function bootstrap() {
-  const path = resolve('.');
-  console.log(path);
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
 
   // 静态资源目录
