@@ -17,5 +17,6 @@ coverage
 # dist
 dist
 
+# compile files
 src/**/*.js
 tsconfig.tsbuildinfo
