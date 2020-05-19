@@ -9,8 +9,13 @@ import defaultConfig from './config/default.config';
 import { GrpcClientFactory } from './grpc/grpc.client-factory';
 
 import { CatsController } from './controller/cats.controller';
+import { UsersController } from './controller/user.controller';
+
 import { CatsService } from './service/cats.service';
+import { UsersService } from './service/user.service';
+
 import { User } from './entities/user.entity';
+
 import { Cat } from './entities/cat.entity';
 import { Profile } from './entities/profile.entity';
 
@@ -45,7 +50,7 @@ if (env.NODE_ENV === 'production') {
     }),
     TypeOrmModule.forFeature([User, Cat, Profile]),
   ],
-  controllers: [CatsController],
-  providers: [GrpcClientFactory, CatsService],
+  controllers: [CatsController, UsersController],
+  providers: [GrpcClientFactory, CatsService, UsersService],
 })
 export class AppModule {}

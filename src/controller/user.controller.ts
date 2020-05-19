@@ -1,5 +1,8 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
+import profiler = require('v8-profiler-node8');
+import fs = require('fs');
+import Bluebird = require('bluebird');
 
 import { UsersService } from '../service/user.service';
 import { UserDto } from './dto/user.dto';
@@ -22,11 +25,29 @@ export class UsersController {
     return await this.usersService.findAll();
   }
 
-  @Get(':id')
-  findOne(
-    @Param('id', new ParseIntPipe())
-    id,
-  ) {
-    // logic
+  // @Get(':id')
+  // findOne(
+  //   @Param('id', new ParseIntPipe())
+  //   id,
+  // ) {
+  //   // logic
+  // }
+
+  @Get('start')
+  async startProfiler() {
+    console.log('开始收集');
+
+    // Start Profiling
+    profiler.startProfiling('CPU profile');
+
+    await Bluebird.delay(60000 * 5);
+
+    const profile = profiler.stopProfiling();
+    profile
+      .export()
+      .pipe(fs.createWriteStream(`cpuprofile-${Date.now()}.cpuprofile`))
+      .on('finish', () => profile.delete());
+    console.log('收集完成');
+    return 'success!';
   }
 }

@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, OnModuleInit, Inject } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, OnModuleInit, Inject, Put, Delete } from '@nestjs/common';
 import { GrpcMethod } from '@nestjs/microservices';
 
 import { nt_module_test } from '../grpc/generated';
@@ -40,11 +40,21 @@ export class CatsController implements OnModuleInit {
   }
 
   @Get(':id')
-  findOne(
-    @Param('id', new ParseIntPipe())
-    id,
-  ) {}
+  findOne(@Param('id', new ParseIntPipe()) id) {
+    return id;
+  }
 
+  @Put(':id')
+  update(@Param('id') id: string, @Body() updateCatDto: CatDto) {
+    return `This action updates a #${id} cat`;
+  }
+
+  @Delete(':id')
+  remove(@Param('id') id: string) {
+    return `This action removes a #${id} cat`;
+  }
+
+  //RPC
   @GrpcMethod('CatService')
   helloRpc(params) {
     return { code: 200, message: `hello,${params.name} ,rpc running!` };

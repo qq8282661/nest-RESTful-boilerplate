@@ -28,6 +28,7 @@
     "@nestjs/platform-express": "^7.0.11",
     "@nestjs/typeorm": "^7.0.0",
     "alipay-sdk": "^3.0.8",
+    "bluebird": "^3.7.2",
     "class-transformer": "0.2.3",
     "class-validator": "0.12.2",
     "grpc": "1.20.3",
@@ -35,7 +36,8 @@
     "reflect-metadata": "0.1.13",
     "rxjs": "6.5.3",
     "typeorm": "^0.2.24",
-    "uuid": "^8.0.0"
+    "uuid": "^8.0.0",
+    "v8-profiler-node8": "^6.2.0"
   },
   "devDependencies": {
     "@nestjs/cli": "6.12.9",

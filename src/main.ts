@@ -17,7 +17,7 @@ async function bootstrap() {
   app.setBaseViewsDir('./views');
   app.setViewEngine('ejs');
 
-  app.useGlobalPipes(new ValidationPipe());
+  // app.useGlobalPipes(new ValidationPipe());
 
   app.useGlobalInterceptors(new LoggingInterceptor());
 
