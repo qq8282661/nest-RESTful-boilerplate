@@ -1,5 +1,4 @@
 import { Body, Controller, Get, Param, Post, OnModuleInit, Inject } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
 import { GrpcMethod } from '@nestjs/microservices';
 
 import { nt_module_test } from '../grpc/generated';
