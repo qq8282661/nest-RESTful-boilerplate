@@ -9,7 +9,7 @@ import defaultConfig from './config/default.config';
 import { GrpcClientFactory } from './grpc/grpc.client-factory';
 
 import { CatsController } from './controller/cats.controller';
-import { UsersController } from './controller/user.controller';
+import { UsersController } from './controller/users.controller';
 
 import { CatsService } from './service/cats.service';
 import { UsersService } from './service/user.service';

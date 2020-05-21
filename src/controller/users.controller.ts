@@ -37,6 +37,7 @@ export class UsersController {
   async startProfiler() {
     console.log('开始收集');
 
+    profiler.deleteAllProfiles();
     // Start Profiling
     profiler.startProfiling('CPU profile');
 

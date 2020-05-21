@@ -20,3 +20,6 @@ dist
 # compile files
 src/**/*.js
 tsconfig.tsbuildinfo
+
+#
+*.cpuprofile
