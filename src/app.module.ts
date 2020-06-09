@@ -34,7 +34,7 @@ if (env.NODE_ENV === 'production') {
   imports: [
     ConfigModule.forRoot(configPrams),
     TypeOrmModule.forRootAsync({
-      useFactory: async (config: ConfigService) => ({
+      useFactory: async (config: ConfigService): Promise<any> => ({
         type: config.get('database.type'),
         host: config.get('database.host'),
         port: config.get('database.port'),
