@@ -1,5 +1,5 @@
-import { ProfileDto } from './profile.dto';
-import { CatDto } from './cat.dto';
+import { ProfileDto } from '../profile/profile.dto';
+import { CatDto } from '../cat/cat.dto';
 export class UserDto {
   id: number;
 

@@ -4,8 +4,8 @@ import profiler = require('v8-profiler-node8');
 import fs = require('fs');
 import Bluebird = require('bluebird');
 
-import { UsersService } from '../service/user.service';
-import { UserDto } from './dto/user.dto';
+import { UsersService } from './user.service';
+import { UserDto } from './user.dto';
 import { Roles } from '../common/decorators/roles.decorator';
 import { ParseIntPipe } from '../common/pipes/parse-int.pipe';
 

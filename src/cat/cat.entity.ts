@@ -8,7 +8,7 @@ import {
   DeleteDateColumn,
   RelationId,
 } from 'typeorm';
-import { User } from './user.entity';
+import { User } from '../user/user.entity';
 
 @Entity({ orderBy: { createdAt: 'DESC' } })
 export class Cat {

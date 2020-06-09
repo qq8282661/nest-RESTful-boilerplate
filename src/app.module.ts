@@ -8,16 +8,16 @@ import prodConfig from './config/production.config';
 import defaultConfig from './config/default.config';
 import { GrpcClientFactory } from './grpc/grpc.client-factory';
 
-import { CatsController } from './controller/cats.controller';
-import { UsersController } from './controller/users.controller';
+import { CatsController } from './cat/cats.controller';
+import { UsersController } from './user/users.controller';
 
-import { CatsService } from './service/cats.service';
-import { UsersService } from './service/user.service';
+import { CatsService } from './cat/cats.service';
+import { UsersService } from './user/user.service';
 
-import { User } from './entities/user.entity';
+import { User } from './user/user.entity';
 
-import { Cat } from './entities/cat.entity';
-import { Profile } from './entities/profile.entity';
+import { Cat } from './cat/cat.entity';
+import { Profile } from './profile/profile.entity';
 
 const configPrams = { isGlobal: true, ignoreEnvFile: true, load: [] };
 if (env.NODE_ENV === 'development') {

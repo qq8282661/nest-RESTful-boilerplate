@@ -10,8 +10,8 @@ import {
   DeleteDateColumn,
   RelationId,
 } from 'typeorm';
-import { Profile } from './profile.entity';
-import { Cat } from './cat.entity';
+import { Profile } from '../profile/profile.entity';
+import { Cat } from '../cat/cat.entity';
 
 @Entity({ orderBy: { createdAt: 'DESC' } })
 export class User {

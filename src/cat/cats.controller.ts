@@ -5,8 +5,8 @@ import { nt_module_test } from '../grpc/generated';
 import { GrpcClientFactory } from '../grpc/grpc.client-factory';
 import { Roles } from '../common/decorators/roles.decorator';
 import { ParseIntPipe } from '../common/pipes/parse-int.pipe';
-import { CatsService } from '../service/cats.service';
-import { CatDto } from './dto/cat.dto';
+import { CatsService } from './cats.service';
+import { CatDto } from './cat.dto';
 
 @Controller('cats')
 export class CatsController implements OnModuleInit {

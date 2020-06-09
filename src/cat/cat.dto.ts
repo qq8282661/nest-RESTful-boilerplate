@@ -1,5 +1,5 @@
 import { IsInt, IsString } from 'class-validator';
-import { UserDto } from './user.dto';
+import { UserDto } from '../user/user.dto';
 
 export class CatDto {
   @IsString()
