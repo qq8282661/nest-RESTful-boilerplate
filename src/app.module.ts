@@ -20,6 +20,8 @@ import { Cat } from './cat/cat.entity';
 import { Profile } from './profile/profile.entity';
 
 const configPrams = { isGlobal: true, ignoreEnvFile: true, load: [] };
+configPrams.load = [() => ({ ...defaultConfig() })];
+
 if (env.NODE_ENV === 'development') {
   console.log(env.NODE_ENV);
   configPrams.load = [() => ({ ...defaultConfig(), ...devConfig() })];
