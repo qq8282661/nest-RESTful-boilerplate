@@ -1,5 +1,9 @@
-import axios from 'axios';
+import { of } from 'rxjs';
+import { map } from 'rxjs/operators';
 
-axios.get('http://www.baidu.com',).then((res) => {
-  console.log(res);
+const a = of(1, 2, 3).pipe(map((x) => x + '!!!')); // etc
+
+a.subscribe((val) => {
+  console.log(val);
 });
+console.log(a);

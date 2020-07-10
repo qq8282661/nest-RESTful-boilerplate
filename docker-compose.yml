@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  cat:
+    build:
+      context: .
+    networks:
+      - my-net
+    ports:
+      - '3000:3000'
+      - '3001:3001'
+    volumes:
+      - .:/usr/src/cat/
+    expose:
+      - '3000'
+      - '3001'
+    entrypoint: node
+networks:
+  my-net:
+    external: true
