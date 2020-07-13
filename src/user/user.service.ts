@@ -16,6 +16,6 @@ export class UsersService {
   }
 
   async findAll() {
-    return this.userRepository.find();
+    return this.userRepository.find({ relations: ['cat'] });
   }
 }

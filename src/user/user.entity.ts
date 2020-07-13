@@ -16,7 +16,7 @@ import { Cat } from '../cat/cat.entity';
 @Entity({ orderBy: { createdAt: 'DESC' } })
 export class User {
   @PrimaryGeneratedColumn('uuid')
-  id: number;
+  id: string;
 
   @Column()
   name: string;

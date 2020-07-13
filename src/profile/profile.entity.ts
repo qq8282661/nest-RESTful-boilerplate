@@ -4,7 +4,7 @@ import { User } from '../user/user.entity';
 @Entity()
 export class Profile {
   @PrimaryGeneratedColumn('uuid')
-  id: number;
+  id: string;
 
   @Column()
   gender: string;
