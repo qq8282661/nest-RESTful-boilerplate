@@ -1,5 +1,5 @@
 export class ProfileDto {
-  id: number;
+  id: string;
 
   gender: string;
 

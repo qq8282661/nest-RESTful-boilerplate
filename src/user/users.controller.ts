@@ -16,7 +16,7 @@ export class UsersController {
   @Post()
   @Roles('admin')
   async create(@Body() createUserDto: UserDto) {
-    this.usersService.create(createUserDto);
+    await this.usersService.create(createUserDto);
     return createUserDto;
   }
 

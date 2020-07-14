@@ -29,8 +29,8 @@ export class User {
 
   @DeleteDateColumn()
   deletedAt: Date;
-
-  @OneToOne((type) => Profile, { onDelete: 'CASCADE' })
+  // cascade 是否级联
+  @OneToOne((type) => Profile, { cascade: true })
   @JoinColumn()
   profile: Profile;
 
@@ -41,5 +41,5 @@ export class User {
     (type) => Cat,
     (cat) => cat.user,
   )
-  cat: Cat;
+  cats: Cat[];
 }

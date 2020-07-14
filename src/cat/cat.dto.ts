@@ -14,4 +14,5 @@ export class CatDto {
   readonly id: string;
 
   user: UserDto;
+  userId: string;
 }

@@ -35,7 +35,7 @@ export class Cat {
 
   @ManyToOne(
     (type) => User,
-    (user) => user.cat,
+    (user) => user.cats,
   )
   user: User;
   @RelationId((cat: Cat) => cat.user)

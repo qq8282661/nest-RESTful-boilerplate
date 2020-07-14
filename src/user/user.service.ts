@@ -11,8 +11,16 @@ export class UsersService {
     private userRepository: Repository<User>,
   ) {}
 
-  create(user: UserDto) {
-    this.userRepository.save(user);
+  async create(user: UserDto) {
+    await this.userRepository.save(user);
+    if (user.cats.length) {
+      const cats = user.cats.map((c) => {
+        c.userId = user.id;
+        return c;
+      });
+      await this.userRepository.manager.getRepository('Cat').save(cats);
+    }
+    return true;
   }
 
   async findAll() {
