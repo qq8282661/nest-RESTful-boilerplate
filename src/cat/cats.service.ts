@@ -22,7 +22,7 @@ export class CatsService {
     //   .select(['cat', 'user.name'])
     //   .getMany();
 
-    const cats = this.catRepository.find({ relations: ['user'] });
+    const cats = this.catRepository.findAndCount({ relations: ['user'] });
 
     return cats;
   }

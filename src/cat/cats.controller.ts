@@ -56,7 +56,7 @@ export class CatsController implements OnModuleInit {
 
   //RPC
   @GrpcMethod('CatService')
-  helloRpc(params) {
+  helloRpc(params: any) {
     return { code: 200, message: `hello,${params.name} ,rpc running!` };
   }
 }
