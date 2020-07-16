@@ -1,9 +1,10 @@
-import { of } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
-const a = of(1, 2, 3).pipe(map((x) => x + '!!!')); // etc
-
-a.subscribe((val) => {
-  console.log(val);
+const foo = new Observable((subscriber) => {
+  console.log('Hello');
+  subscriber.next(42);
 });
-console.log(a);
+
+foo.subscribe((x) => {
+  console.log(x);
+});
