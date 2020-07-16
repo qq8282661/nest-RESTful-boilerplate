@@ -40,7 +40,7 @@ export class CatsController implements OnModuleInit {
   }
 
   @Get(':id')
-  findOne(@Param('id', new ParseIntPipe()) id) {
+  findOne(@Param('id', new ParseIntPipe()) id: number) {
     return id;
   }
 
