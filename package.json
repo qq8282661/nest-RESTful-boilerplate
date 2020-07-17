@@ -17,7 +17,7 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./e2e/jest-e2e.json",
     "grpc:gen": "./node_modules/.bin/rxjs-grpc -o src/grpc/generated.ts src/grpc/protobufs/*.proto",
-    "tsc": "tsc"
+    "tsc": "nest build"
   },
   "dependencies": {
     "@grpc/proto-loader": "^0.5.4",
@@ -60,7 +60,7 @@
     "tslint": "6.1.2",
     "tslint-config-prettier": "^1.18.0",
     "tslint-plugin-prettier": "^2.3.0",
-    "typescript": "3.6.5"
+    "typescript": "3.9.7"
   },
   "jest": {
     "moduleFileExtensions": [
