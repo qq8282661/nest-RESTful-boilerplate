@@ -19,7 +19,9 @@ dist
 
 # compile files
 src/**/*.js
+
 tsconfig.tsbuildinfo
+
 tsconfig.build.tsbuildinfo
 
 #
