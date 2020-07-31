@@ -15,15 +15,17 @@ export class UsersService {
     await this.userRepository.save(user);
     if (user.cats.length) {
       const cats = user.cats.map((c) => {
-        c.userId = user.id;
+        const userObj: any = { id: user.id };
+        c.user = userObj;
         return c;
       });
+      console.log(cats);
       await this.userRepository.manager.getRepository('Cat').save(cats);
     }
     return true;
   }
 
   async findAll() {
-    return this.userRepository.find({ relations: ['cat'] });
+    return this.userRepository.find({ relations: ['cats'] });
   }
 }

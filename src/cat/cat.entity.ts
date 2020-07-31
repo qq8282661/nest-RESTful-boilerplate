@@ -15,13 +15,13 @@ export class Cat {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({ type: 'varchar', nullable: false })
+  @Column({ type: 'varchar' })
   name: string;
 
-  @Column({ type: 'int', nullable: true })
+  @Column({ type: 'int', default: 0 })
   age: number;
 
-  @Column({ type: 'varchar', nullable: true })
+  @Column({ type: 'varchar', default: '' })
   breed: string;
 
   @CreateDateColumn()
