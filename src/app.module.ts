@@ -47,6 +47,7 @@ if (env.NODE_ENV === 'production') {
         logging: config.get('database.logging'),
         // entities: [__dirname + '/**/*.entity{.ts,.js}'],
         autoLoadEntities: true,
+        dropSchema: config.get('database.dropSchema'),
       }),
       inject: [ConfigService],
     }),
