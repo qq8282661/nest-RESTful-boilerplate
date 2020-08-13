@@ -6,7 +6,6 @@
   "jsRules": {
     "no-unused-expression": true
   },
-  "rulesDirectory": ["node_modules/tslint-microsoft-contrib"],
   "rules": {
     "prettier": true,
     "ordered-imports": false,
