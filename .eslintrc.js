@@ -19,7 +19,6 @@ module.exports = {
     sourceType: 'module',
   },
   rules: {
-    // 如果有不适合的规则，可以在此调整
-    // ...
+    'no-unused-vars': ['warn', { vars: 'all', args: 'after-used', ignoreRestSiblings: false }],
   },
 };

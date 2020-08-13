@@ -25,7 +25,7 @@ export class UsersService {
     return true;
   }
 
-  async findAll() {
+  async findAll(): Promise<User[]> {
     return this.userRepository.find({ relations: ['cats'] });
   }
 }

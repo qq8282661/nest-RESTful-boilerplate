@@ -10,7 +10,7 @@ import { CatDto } from './cat.dto';
 
 @Controller('cats')
 export class CatsController implements OnModuleInit {
-  onModuleInit() {
+  onModuleInit(): void {
     this.catGrpcService = this.grpcClientFactory.testServiceClient.getService('CatService');
   }
   constructor(
