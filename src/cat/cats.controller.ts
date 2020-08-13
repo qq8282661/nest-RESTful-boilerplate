@@ -54,7 +54,7 @@ export class CatsController implements OnModuleInit {
     return `This action removes a #${id} cat`;
   }
 
-  //RPC
+  // RPC
   @GrpcMethod('CatService')
   helloRpc(params: any) {
     return { code: 200, message: `hello,${params.name} ,rpc running!` };

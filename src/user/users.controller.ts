@@ -41,7 +41,7 @@ export class UsersController {
     // Start Profiling
     profiler.startProfiling('CPU profile');
 
-    await Bluebird.delay(60000 * 5);
+    await Bluebird.delay(5 * 60000);
 
     const profile = profiler.stopProfiling();
     profile

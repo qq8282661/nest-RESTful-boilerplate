@@ -6,6 +6,7 @@
   "jsRules": {
     "no-unused-expression": true
   },
+  "rulesDirectory": ["node_modules/tslint-microsoft-contrib"],
   "rules": {
     "prettier": true,
     "ordered-imports": false,
@@ -15,6 +16,8 @@
     "no-unused-variable": true,
     "no-unused-expression": true,
     "no-var-requires": false,
-    "member-ordering": false
+    "member-ordering": false,
+    "no-parameter-properties": false,
+    "no-magic-numbers": false
   }
 }
