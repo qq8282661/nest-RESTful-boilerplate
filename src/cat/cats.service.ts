@@ -6,10 +6,7 @@ import { CatDto } from './cat.dto';
 
 @Injectable()
 export class CatsService {
-  constructor(
-    @InjectRepository(Cat)
-    private catRepository: Repository<Cat>,
-  ) {}
+  constructor(@InjectRepository(Cat) private catRepository: Repository<Cat>) {}
 
   create(cat: CatDto) {
     this.catRepository.save(cat);
