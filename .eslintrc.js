@@ -24,5 +24,6 @@ module.exports = {
     'no-unused-vars': 'warn',
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
+    'node/no-unpublished-import': 'off',
   },
 };

@@ -1,4 +1,4 @@
-# 使用最小node图像
+# 使用最小node图像 --这个是生成环境的DockerFile
 FROM node:12.16.3-alpine 
 
 # 改变时区
@@ -17,8 +17,9 @@ COPY  package.json /usr/src/cat/package.json
 
 RUN cd /usr/src/cat/
 
-#只安装生产依赖
-RUN npm i --production --registry=https://registry.npm.taobao.org
+# 只安装生产依赖
+# RUN npm i --production --registry=https://registry.npm.taobao.org
+RUN npm i  --registry=https://registry.npm.taobao.org
 
 # copy code
 COPY . /usr/src/cat/

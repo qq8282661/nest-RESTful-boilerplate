@@ -13,7 +13,7 @@ services:
     expose:
       - '3000'
       - '3001'
-    entrypoint: node
+    entrypoint: npm run dev
 networks:
   my-net:
     external: true
