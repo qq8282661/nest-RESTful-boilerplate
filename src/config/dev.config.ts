@@ -2,6 +2,7 @@ export default () => ({
   database: {
     type: 'mysql',
     host: 'localhost',
+    // host: 'mysql',
     port: 3306,
     username: 'root',
     password: 'root',
