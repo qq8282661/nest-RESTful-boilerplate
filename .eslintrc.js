@@ -19,7 +19,7 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: 'module',
   },
-  ignorePatterns: ['**/grpc/generated.ts', 'node_modules'],
+  ignorePatterns: ['**/grpc/generated.ts', 'node_modules','*.js'],
   rules: {
     'no-unused-vars': 'warn',
     '@typescript-eslint/no-explicit-any': 'off',
