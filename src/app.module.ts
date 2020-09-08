@@ -35,6 +35,7 @@ if (env.NODE_ENV === 'production') {
 @Module({
   imports: [
     ConfigModule.forRoot(configPrams),
+
     TypeOrmModule.forRootAsync({
       useFactory: async (config: ConfigService): Promise<any> => ({
         type: config.get('database.type'),
@@ -48,6 +49,7 @@ if (env.NODE_ENV === 'production') {
         // entities: [__dirname + '/**/*.entity{.ts,.js}'],
         autoLoadEntities: true,
         dropSchema: config.get('database.dropSchema'),
+        timezone: '+08:00',
       }),
       inject: [ConfigService],
     }),
