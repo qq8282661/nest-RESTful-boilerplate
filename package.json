@@ -4,20 +4,20 @@
   "description": "Nest TypeScript starter repository",
   "license": "MIT",
   "scripts": {
-    "start": "export NODE_ENV='production'&& node src/main.js",
-    "dev": "find ./src  -name '*.js' -exec rm {} \\; && npm run start:watch",
-    "start:watch": "nodemon",
+    "start": "node src/prod.js",
+    "dev": "nodemon",
     "start:debug": "nest start --debug --watch",
     "lint": "tslint -p tsconfig.json -c tslint.json",
     "test": "jest",
     "build": "nest build",
+    "tsc": "tsc",
+    "clear": "find ./src  -name '*.js' -exec rm {} \\;",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./e2e/jest-e2e.json",
-    "grpc:gen": "./node_modules/.bin/rxjs-grpc -o src/grpc/generated.ts src/grpc/protobufs/*.proto",
-    "tsc": "nest build"
+    "grpc:gen": "./node_modules/.bin/rxjs-grpc -o src/grpc/generated.ts src/grpc/protobufs/*.proto"
   },
   "dependencies": {
     "@grpc/proto-loader": "^0.5.5",
