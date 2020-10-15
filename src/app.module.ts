@@ -15,7 +15,6 @@ import { CatsService } from './cat/cats.service';
 import { UsersService } from './user/user.service';
 
 import { User } from './user/user.entity';
-
 import { Cat } from './cat/cat.entity';
 import { Profile } from './profile/profile.entity';
 
