@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, Logger } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { env } from 'process';
@@ -55,6 +55,6 @@ if (env.NODE_ENV === 'production') {
     TypeOrmModule.forFeature([User, Cat, Profile]),
   ],
   controllers: [CatsController, UsersController],
-  providers: [GrpcClientFactory, CatsService, UsersService],
+  providers: [GrpcClientFactory, CatsService, UsersService, Logger],
 })
 export class AppModule {}
