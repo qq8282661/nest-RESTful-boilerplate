@@ -6,7 +6,10 @@ import { UserDto } from './user.dto';
 
 @Injectable()
 export class UsersService {
-  constructor(@InjectRepository(User) private userRepository: Repository<User>, private logger: Logger) {
+  constructor(
+    @InjectRepository(User) private userRepository: Repository<User>,
+    private logger: Logger,
+  ) {
     this.logger.setContext('UserService');
   }
 
@@ -25,7 +28,8 @@ export class UsersService {
   }
 
   async findAll(): Promise<User[]> {
-    this.logger.debug('测试打印');
+    const data = { name: 'ming', age: 11 };
+    this.logger.debug(data);
     return this.userRepository.find({ relations: ['cats'] });
   }
 }
