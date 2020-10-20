@@ -31,4 +31,6 @@ COPY . /usr/src/cat/
 
 EXPOSE 3000 3001
 
-CMD export NODE_ENV='production'&& node src/main.js
+USER node
+
+CMD export NODE_ENV='production' && node src/prod.js
