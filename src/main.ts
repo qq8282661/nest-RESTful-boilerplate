@@ -6,14 +6,15 @@ import { MicroserviceOptions, Transport } from '@nestjs/microservices';
 import * as compression from 'compression';
 import helmet = require('helmet');
 
-// import { logger } from './common/logger';
+import { logger } from './common/logger';
 import { ValidationPipe } from './common/pipes/validation.pipe';
 import { LoggingInterceptor } from './common/interceptors/logging.interceptor';
 import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {
-    // logger: logger,
+    logger:
+      process.env.NODE_ENV === 'production' ? logger : ['debug', 'error', 'log', 'verbose', 'warn'],
   });
 
   // app.use()   // 使用express的中间件与express相同;
