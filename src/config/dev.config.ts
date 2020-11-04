@@ -1,3 +1,5 @@
+import { flatten } from '@nestjs/common';
+
 export default () => ({
   database: {
     type: 'mysql',
@@ -10,6 +12,6 @@ export default () => ({
     synchronize: true,
     autoLoadEntities: true,
     logging: true,
-    dropSchema: true,
+    dropSchema: false,
   },
 });

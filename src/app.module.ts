@@ -17,6 +17,7 @@ import { UsersService } from './user/user.service';
 import { User } from './user/user.entity';
 import { Cat } from './cat/cat.entity';
 import { Profile } from './profile/profile.entity';
+import { Role } from './user/role.entity';
 
 const configPrams = { isGlobal: true, ignoreEnvFile: true, load: [] };
 configPrams.load = [() => ({ ...defaultConfig() })];
@@ -52,7 +53,7 @@ if (env.NODE_ENV === 'production') {
       }),
       inject: [ConfigService],
     }),
-    TypeOrmModule.forFeature([User, Cat, Profile]),
+    TypeOrmModule.forFeature([User, Cat, Profile, Role]),
   ],
   controllers: [CatsController, UsersController],
   providers: [GrpcClientFactory, CatsService, UsersService, Logger],

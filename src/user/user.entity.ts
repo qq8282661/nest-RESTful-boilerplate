@@ -9,9 +9,12 @@ import {
   UpdateDateColumn,
   DeleteDateColumn,
   RelationId,
+  ManyToMany,
+  JoinTable,
 } from 'typeorm';
 import { Profile } from '../profile/profile.entity';
 import { Cat } from '../cat/cat.entity';
+import { Role } from './role.entity';
 
 @Entity({ orderBy: { createdAt: 'DESC' } })
 export class User {
@@ -42,4 +45,7 @@ export class User {
     (cat) => cat.user,
   )
   cats: Cat[];
+  @ManyToMany(() => Role)
+  @JoinTable()
+  roles: Role[];
 }
