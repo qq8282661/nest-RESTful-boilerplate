@@ -17,7 +17,7 @@ export class LoggingInterceptor implements NestInterceptor {
         const res = context.switchToHttp().getResponse();
         console.log('<=', 'req.method', req.method);
         console.log('<=', 'req.url', req.url);
-        console.log('<=', 'res.status', res.data);
+        console.log('<=', 'res.status', res.statusCode);
       }),
     );
   }

@@ -22,7 +22,7 @@ export class UsersController {
 
   @Get()
   async findAll() {
-    // throw new HttpException('error', 401);
+    // throw new HttpException({ errorMessage: '错误', code: 4001 }, 401);
     return await this.usersService.findAll();
   }
 

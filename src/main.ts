@@ -8,7 +8,7 @@ import helmet = require('helmet');
 
 import { logger } from './common/logger';
 import { ValidationPipe } from './common/pipes/validation.pipe';
-import { LoggingInterceptor } from './common/interceptors/logging.interceptor';
+import { LoggingInterceptor, TransformInterceptor } from './common/interceptors';
 import { AppModule } from './app.module';
 
 async function bootstrap() {
@@ -27,13 +27,14 @@ async function bootstrap() {
   // 模板目录
   app.setBaseViewsDir('./views');
   app.setViewEngine('ejs');
-
-  app.useGlobalPipes(new ValidationPipe());
-
-  app.useGlobalInterceptors(new LoggingInterceptor());
-
   app.enableCors();
 
+  app.useGlobalPipes(new ValidationPipe());
+  app.useGlobalInterceptors(new TransformInterceptor());
+
+  if (process.env.NODE_ENV === 'deployment') {
+    app.useGlobalInterceptors(new LoggingInterceptor());
+  }
   app.connectMicroservice<MicroserviceOptions>({
     transport: Transport.GRPC,
     options: {
