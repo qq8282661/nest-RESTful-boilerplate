@@ -30,6 +30,6 @@ export class UsersService {
   async findAll(): Promise<User[]> {
     const data = { name: 'ming', age: 11 };
     this.logger.debug(data);
-    return this.userRepository.find({ relations: ['roles'], skip: 0, take: 10 });
+    return this.userRepository.find({ relations: ['roles', 'userToHobbies'], skip: 0, take: 10 });
   }
 }

@@ -24,6 +24,12 @@ export class Cat {
   @Column({ type: 'varchar', default: '' })
   breed: string;
 
+  @Column({ type: 'varchar', length: 100, nullable: true })
+  address: string;
+
+  @Column({ type: 'bool', nullable: true })
+  userSex: boolean;
+
   @CreateDateColumn()
   createdAt: Date;
 

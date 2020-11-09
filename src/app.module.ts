@@ -18,6 +18,8 @@ import { User } from './user/user.entity';
 import { Cat } from './cat/cat.entity';
 import { Profile } from './profile/profile.entity';
 import { Role } from './user/role.entity';
+import { Hobby } from './user/hobby.entity';
+import { UserToHobby } from './user/user-to-hobby.entity';
 
 const configPrams = { isGlobal: true, ignoreEnvFile: true, load: [] };
 configPrams.load = [() => ({ ...defaultConfig() })];
@@ -53,7 +55,7 @@ if (env.NODE_ENV === 'production') {
       }),
       inject: [ConfigService],
     }),
-    TypeOrmModule.forFeature([User, Cat, Profile, Role]),
+    TypeOrmModule.forFeature([User, Cat, Profile, Role, Hobby, UserToHobby]),
   ],
   controllers: [CatsController, UsersController],
   providers: [GrpcClientFactory, CatsService, UsersService, Logger],
