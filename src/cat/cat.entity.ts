@@ -39,10 +39,7 @@ export class Cat {
   @DeleteDateColumn()
   deletedAt: Date;
 
-  @ManyToOne(
-    (type) => User,
-    (user) => user.cats,
-  )
+  @ManyToOne((type) => User, (user) => user.cats)
   user: User;
   @RelationId((cat: Cat) => cat.user)
   userId: string;

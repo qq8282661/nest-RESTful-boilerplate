@@ -48,19 +48,13 @@ export class User {
   @RelationId((user: User) => user.profile)
   profileId: string;
 
-  @OneToMany(
-    (type) => Cat,
-    (cat) => cat.user,
-  )
+  @OneToMany((type) => Cat, (cat) => cat.user)
   cats: Cat[];
 
   @ManyToMany(() => Role)
   @JoinTable()
   roles: Role[];
 
-  @OneToMany(
-    () => UserToHobby,
-    (userToHobbies) => userToHobbies.user,
-  )
+  @OneToMany(() => UserToHobby, (userToHobbies) => userToHobbies.user)
   public userToHobbies!: UserToHobby[];
 }
