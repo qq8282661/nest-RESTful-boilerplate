@@ -16,9 +16,15 @@ export class UserToHobby {
   @Column()
   public order!: number;
 
-  @ManyToOne(() => User, (user) => user.userToHobbies)
+  @ManyToOne(
+    () => User,
+    (user) => user.userToHobbies,
+  )
   public user!: User;
 
-  @ManyToOne(() => Hobby, (hobby) => hobby.userToHobbies)
+  @ManyToOne(
+    () => Hobby,
+    (hobby) => hobby.userToHobbies,
+  )
   public hobby!: Hobby;
 }

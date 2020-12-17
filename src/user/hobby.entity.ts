@@ -25,6 +25,9 @@ export class Hobby {
   @DeleteDateColumn()
   deletedAt: Date;
 
-  @OneToMany(() => UserToHobby, (userToHobbies) => userToHobbies.hobby)
+  @OneToMany(
+    () => UserToHobby,
+    (userToHobbies) => userToHobbies.hobby,
+  )
   public userToHobbies!: UserToHobby[];
 }
