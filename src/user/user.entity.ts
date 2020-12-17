@@ -9,9 +9,13 @@ import {
   UpdateDateColumn,
   DeleteDateColumn,
   RelationId,
+  ManyToMany,
+  JoinTable,
 } from 'typeorm';
 import { Profile } from '../profile/profile.entity';
 import { Cat } from '../cat/cat.entity';
+import { Role } from './role.entity';
+import { UserToHobby } from './user-to-hobby.entity';
 
 @Entity({ orderBy: { createdAt: 'DESC' } })
 export class User {
@@ -21,6 +25,12 @@ export class User {
   @Column()
   name: string;
 
+  @Column({ type: 'varchar', length: 100, nullable: true })
+  address: string;
+
+  @Column({ type: 'bool', nullable: true })
+  sex: boolean;
+
   @CreateDateColumn()
   createdAt: Date;
 
@@ -29,6 +39,7 @@ export class User {
 
   @DeleteDateColumn()
   deletedAt: Date;
+
   // cascade 是否级联
   @OneToOne((type) => Profile, { cascade: true })
   @JoinColumn()
@@ -42,4 +53,14 @@ export class User {
     (cat) => cat.user,
   )
   cats: Cat[];
+
+  @ManyToMany(() => Role)
+  @JoinTable()
+  roles: Role[];
+
+  @OneToMany(
+    () => UserToHobby,
+    (userToHobbies) => userToHobbies.user,
+  )
+  public userToHobbies!: UserToHobby[];
 }

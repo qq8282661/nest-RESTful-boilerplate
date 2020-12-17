@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, Logger } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { env } from 'process';
@@ -15,9 +15,11 @@ import { CatsService } from './cat/cats.service';
 import { UsersService } from './user/user.service';
 
 import { User } from './user/user.entity';
-
 import { Cat } from './cat/cat.entity';
 import { Profile } from './profile/profile.entity';
+import { Role } from './user/role.entity';
+import { Hobby } from './user/hobby.entity';
+import { UserToHobby } from './user/user-to-hobby.entity';
 
 const configPrams = { isGlobal: true, ignoreEnvFile: true, load: [] };
 configPrams.load = [() => ({ ...defaultConfig() })];
@@ -35,6 +37,7 @@ if (env.NODE_ENV === 'production') {
 @Module({
   imports: [
     ConfigModule.forRoot(configPrams),
+
     TypeOrmModule.forRootAsync({
       useFactory: async (config: ConfigService): Promise<any> => ({
         type: config.get('database.type'),
@@ -48,12 +51,13 @@ if (env.NODE_ENV === 'production') {
         // entities: [__dirname + '/**/*.entity{.ts,.js}'],
         autoLoadEntities: true,
         dropSchema: config.get('database.dropSchema'),
+        timezone: '+08:00',
       }),
       inject: [ConfigService],
     }),
-    TypeOrmModule.forFeature([User, Cat, Profile]),
+    TypeOrmModule.forFeature([User, Cat, Profile, Role, Hobby, UserToHobby]),
   ],
   controllers: [CatsController, UsersController],
-  providers: [GrpcClientFactory, CatsService, UsersService],
+  providers: [GrpcClientFactory, CatsService, UsersService, Logger],
 })
 export class AppModule {}

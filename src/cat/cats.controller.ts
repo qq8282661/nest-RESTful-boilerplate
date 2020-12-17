@@ -1,4 +1,14 @@
-import { Body, Controller, Get, Param, Post, OnModuleInit, Inject, Put, Delete } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  Post,
+  OnModuleInit,
+  Inject,
+  Put,
+  Delete,
+} from '@nestjs/common';
 import { GrpcMethod } from '@nestjs/microservices';
 
 import { nt_module_test } from '../grpc/generated';
@@ -10,7 +20,7 @@ import { CatDto } from './cat.dto';
 
 @Controller('cats')
 export class CatsController implements OnModuleInit {
-  onModuleInit() {
+  onModuleInit(): void {
     this.catGrpcService = this.grpcClientFactory.testServiceClient.getService('CatService');
   }
   constructor(

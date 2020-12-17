@@ -1,6 +1,8 @@
 version: '3.8'
 services:
   cat:
+    container_name: cat
+    image: node:12.18.3
     build:
       context: .
     networks:
@@ -10,10 +12,12 @@ services:
       - '3001:3001'
     volumes:
       - .:/usr/src/cat/
+    stdin_open: true
+    tty: true
     expose:
       - '3000'
       - '3001'
-    entrypoint: node
+    command: /bin/bash
 networks:
   my-net:
     external: true

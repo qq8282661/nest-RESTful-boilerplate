@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, HttpException, Param, Post } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import profiler = require('v8-profiler-node8');
 import fs = require('fs');
@@ -14,7 +14,7 @@ export class UsersController {
   constructor(private readonly usersService: UsersService, private configService: ConfigService) {}
 
   @Post()
-  @Roles('admin')
+  // @Roles('admin')
   async create(@Body() createUserDto: UserDto) {
     await this.usersService.create(createUserDto);
     return createUserDto;
@@ -22,6 +22,7 @@ export class UsersController {
 
   @Get()
   async findAll() {
+    // throw new HttpException({ errorMessage: '错误', code: 4001 }, 401);
     return await this.usersService.findAll();
   }
 

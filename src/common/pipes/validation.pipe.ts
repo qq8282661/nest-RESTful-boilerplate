@@ -1,11 +1,17 @@
-import { ArgumentMetadata, BadRequestException, Injectable, PipeTransform, Type } from '@nestjs/common';
+import {
+  ArgumentMetadata,
+  BadRequestException,
+  Injectable,
+  PipeTransform,
+  Type,
+} from '@nestjs/common';
 import { plainToClass } from 'class-transformer';
 import { validate } from 'class-validator';
 
 @Injectable()
 export class ValidationPipe implements PipeTransform<any> {
   async transform(value: any, metadata: ArgumentMetadata) {
-    //  获取数据的类型
+    // 获取数据的类型
     const { metatype } = metadata;
     // console.log('ValidationPipe transform value ', value);
     // console.log('ValidationPipe transform metadata ', metadata);

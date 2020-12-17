@@ -1,10 +1,11 @@
-import { Observable } from 'rxjs';
+import { createServer as server } from 'http';
+import { on } from 'events';
 
-const foo = new Observable((subscriber) => {
-  console.log('Hello');
-  subscriber.next(42);
-});
+async function test() {
+  for await (const [{ url }, res] of on(server().listen(3000), 'request')) {
+    if (url === '/hello') res.end('Hello Node.js!');
+    else res.end('OK!');
+  }
+}
 
-foo.subscribe((x) => {
-  console.log(x);
-});
+test();

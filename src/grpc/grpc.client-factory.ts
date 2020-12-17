@@ -8,7 +8,11 @@ export class GrpcClientFactory {
   public readonly testServiceClient: ClientGrpc;
 }
 
-export function generateGrpcOptions(url: string, packageName: string, protoFileName: string): GrpcOptions {
+export function generateGrpcOptions(
+  url: string,
+  packageName: string,
+  protoFileName: string,
+): GrpcOptions {
   return {
     transport: Transport.GRPC,
     options: {

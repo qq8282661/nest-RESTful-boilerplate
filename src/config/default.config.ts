@@ -10,6 +10,6 @@ export default () => ({
     entities: [__dirname + '/**/*.entity.ts'],
     autoLoadEntities: true,
     logging: true,
-    dropSchema: true,
+    dropSchema: false,
   },
 });
