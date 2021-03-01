@@ -26,3 +26,6 @@ tsconfig.build.tsbuildinfo
 
 #
 *.cpuprofile
+
+# except for .gitkeep
+!.gitkeep
