@@ -14,7 +14,7 @@ FROM node:12.18.3-alpine
 
 # 改变时区
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories \
-    &&apk -- update add tzdata \
+    &&apk --update add tzdata \
     && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \ 
     && echo "Asia/Shanghai" > /etc/timezone \
     && apk del tzdata \

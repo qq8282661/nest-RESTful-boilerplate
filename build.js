@@ -7,7 +7,7 @@ const exec = promisify(process.exec);
 const shell = `
 docker build --tag=${package.name}:v${package.version} . &&
 docker tag ${package.name}:v${package.version}  qq8282661/${package.name}:v${package.version} &&
-docker qq8282661/${package.name}:v${package.version}
+docker push qq8282661/${package.name}:v${package.version}
 `;
 console.log(shell);
 async function bootstrap() {
